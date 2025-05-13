@@ -1,7 +1,6 @@
 package org.gestiondestitresimportationbcp;
-
 import org.gestiondestitresimportationbcp.components.DirectoriesInitializer;
-import org.gestiondestitresimportationbcp.config.ConfigParams;
+import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.service.WatchFolderServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(ConfigParams.class)
+@EnableConfigurationProperties(PathsProperties.class)
 public class GestionDesTitresImportationBcpApplication  implements CommandLineRunner {
     @Autowired
     private WatchFolderServices watchFolder;
@@ -24,5 +23,4 @@ public class GestionDesTitresImportationBcpApplication  implements CommandLineRu
         logDirectoryInitializer.createlogFile();
         watchFolder.fileswatcher();
     }
-
 }

@@ -3,9 +3,11 @@ package org.gestiondestitresimportationbcp.service;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
 import org.gestiondestitresimportationbcp.models.FichiersTitreBanque;
 import org.gestiondestitresimportationbcp.models.FichiersTitreBanqueMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -22,6 +24,8 @@ import java.io.InputStream;
 public class ParseFICFile implements FileParsingServices {
     private FichiersTitreBanque fichiersTitreBanque;
     private boolean isValid = false ;
+    @Autowired
+    private PathsProperties pathsProperties;
 
     @Override
     public FichiersTitreBanqueMessage parseFICFIle(File file) {
@@ -31,7 +35,7 @@ public class ParseFICFile implements FileParsingServices {
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             // Charger le schéma XSD depuis le classpath
-            ClassPathResource xsdResource = new ClassPathResource("\\static\\FICshema.xsd");
+            ClassPathResource xsdResource = new ClassPathResource("\\"+pathsProperties.getFicshema());
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             try (InputStream xsdStream = xsdResource.getInputStream()) {
                 Schema schema = schemaFactory.newSchema(new StreamSource(xsdStream));

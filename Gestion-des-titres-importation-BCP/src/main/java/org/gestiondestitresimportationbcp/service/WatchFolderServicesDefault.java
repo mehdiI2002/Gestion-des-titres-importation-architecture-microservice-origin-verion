@@ -1,5 +1,6 @@
 package org.gestiondestitresimportationbcp.service;
 
+import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.events.FileCreatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,18 +16,19 @@ import java.util.Date;
 public class WatchFolderServicesDefault implements WatchFolderServices {
     private final ApplicationEventPublisher eventPublisher;
     private static final Logger logger = LoggerFactory.getLogger("FilesLogger");
-
+    @Autowired
+private PathsProperties pathsProperties;
     @Autowired
     public WatchFolderServicesDefault(ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
     }
-   @Override
+    @Override
     public void fileswatcher() {
        startAsyncWatcher();
     }
     @Async
   void startAsyncWatcher() {
-        Path path = Paths.get("C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\Files");
+        Path path = Paths.get(pathsProperties.getFiles());
         try (WatchService watchService = FileSystems.getDefault().newWatchService()) {
             path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE);
             logger.info("Monitoring directory: " + path.toString());

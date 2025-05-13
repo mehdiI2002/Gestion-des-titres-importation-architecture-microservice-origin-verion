@@ -1,5 +1,6 @@
 package org.gestiondestitresimportationbcp.service;
 
+import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.entities.Fichier;
 import org.gestiondestitresimportationbcp.entities.PdfFile;
 
@@ -17,11 +18,13 @@ public class DocumentService {
     VerifyPdfService verifyPdfService;
 @Autowired
 PdfFileServices pdfFileServices;
-    private final String uploadDir = "C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\docs";  // Dossier de stockage
+@Autowired
+   private PathsProperties pathsProperties;
     @Autowired
     private PdfFileRepository pdfFileRepository;
 
     public void decodeContent(FichiersTitreBanqueMessage message) {
+        String uploadDir = pathsProperties.getDocs();
         List<Fichier> fichiers = message.getFichierInfo().getFichiers();
         for (Fichier fichier : fichiers) {
             System.out.println("Nom du fichier : " + fichier.getNom());

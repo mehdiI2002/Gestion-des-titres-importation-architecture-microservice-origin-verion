@@ -3,8 +3,10 @@ package org.gestiondestitresimportationbcp.service;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.models.ResponseGenerique;
 import org.gestiondestitresimportationbcp.models.ResponseGeneriqueMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -13,6 +15,8 @@ import java.util.Date;
 
 @Service
 public class TranformObjectsToAccuseFile {
+    @Autowired
+    private PathsProperties pathsProperties;
     public void tranformReponseToXml(ResponseGeneriqueMessage message){
         try{
         ResponseGenerique response = new ResponseGenerique(message);
@@ -23,7 +27,8 @@ public class TranformObjectsToAccuseFile {
 
         // Formater le XML pour être lisible
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            String directoryPath = "C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\Accusé\\";
+            String directoryPath =  pathsProperties.getAccuse();
+            System.out.println("path"+ directoryPath);
             Date dateMessage = message.getHeaderMessage().getDateMessage();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
             String formattedDate = dateFormat.format(dateMessage);
@@ -33,7 +38,7 @@ public class TranformObjectsToAccuseFile {
                     + formattedDate
                     + message.getHeaderMessage().getNumeroMessage()+".xml";
         // Écrire l'objet dans un fichier XML
-        File file = new File(directoryPath+fileName);
+        File file = new File(directoryPath+"\\"+fileName);
         marshaller.marshal(response, file);
     } catch (JAXBException e) {
         e.printStackTrace();

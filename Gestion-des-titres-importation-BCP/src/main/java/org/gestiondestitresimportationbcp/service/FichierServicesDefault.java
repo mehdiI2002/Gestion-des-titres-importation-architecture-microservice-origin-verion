@@ -11,7 +11,6 @@ import java.util.List;
 public class FichierServicesDefault implements  FichierServices{
     @Override
     public void decode(FichiersTitreBanqueMessage fichiersMessage) {
-        List<Fichier> fichiers = fichiersMessage.getFichierInfo().getFichiers();
     }
 
     @Autowired
