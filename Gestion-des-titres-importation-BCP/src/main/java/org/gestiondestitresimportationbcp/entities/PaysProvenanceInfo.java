@@ -27,6 +27,10 @@ public class PaysProvenanceInfo {
         return id;
     }
 
+    public PaysProvenanceInfo(String pays) {
+        this.pays = pays;
+    }
+
     public String getPays() {
         return pays;
     }

@@ -2,11 +2,13 @@ package org.gestiondestitresimportationbcp.components;
 
 import org.gestiondestitresimportationbcp.config.PathsProperties;
 import org.gestiondestitresimportationbcp.service.WatchFolderServicesDefault;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 
 @Component
+
 public class DirectoriesInitializer {
     WatchFolderServicesDefault watchFolder;
 PathsProperties pathsProperties;

@@ -27,6 +27,13 @@ public class Banque {
 @OneToMany(mappedBy = "banque")
 private List<TitreImportation> titreImportations;
 
+    public Banque(BanqueId idBanque, Long codeBanque, long guichet, long localite) {
+        this.idBanque = idBanque;
+        this.codeBanque = codeBanque;
+        this.guichet = guichet;
+        this.localite = localite;
+    }
+
     public Banque() {
         this.titreImportations = new ArrayList<>();
     }

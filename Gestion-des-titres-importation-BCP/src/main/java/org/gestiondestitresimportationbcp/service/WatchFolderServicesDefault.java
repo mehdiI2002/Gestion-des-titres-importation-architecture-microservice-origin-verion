@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import java.io.File;
@@ -17,7 +18,7 @@ public class WatchFolderServicesDefault implements WatchFolderServices {
     private final ApplicationEventPublisher eventPublisher;
     private static final Logger logger = LoggerFactory.getLogger("FilesLogger");
     @Autowired
-private PathsProperties pathsProperties;
+    private PathsProperties pathsProperties;
     @Autowired
     public WatchFolderServicesDefault(ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
@@ -43,7 +44,8 @@ private PathsProperties pathsProperties;
                         int waitTime = 500;
                         while (maxRetries-- > 0 && !file.canRead()) {                        try {
                             Thread.sleep(waitTime); // attendre avant de réessayer
-                        } catch (InterruptedException e) {
+                        }
+                        catch (InterruptedException e) {
                             Thread.currentThread().interrupt(); // rétablir l'état d'interruption
                             logger.error("Le thread a été interrompu pendant l'attente", e);
                             return;

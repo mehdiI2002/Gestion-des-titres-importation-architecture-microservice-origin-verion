@@ -23,4 +23,5 @@ public class GestionDesTitresImportationBcpApplication  implements CommandLineRu
         logDirectoryInitializer.createlogFile();
         watchFolder.fileswatcher();
     }
+
 }

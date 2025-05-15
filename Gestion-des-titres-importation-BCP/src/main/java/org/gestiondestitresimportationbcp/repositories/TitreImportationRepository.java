@@ -16,8 +16,10 @@ public interface TitreImportationRepository extends JpaRepository<TitreImportati
     List<TitreImportation> findAllById_NumEnregistrementContainingAndEtat(@Param("numEnregistrement") String numEnregistrement);
 
 
-    @Query("SELECT t FROM TitreImportation t JOIN t.operator o WHERE o.ribBancaire LIKE %:ribBancaire% AND t.etat = 'non traiter'")
+
+    @Query("SELECT t FROM TitreImportation t JOIN t.operator o WHERE o.ribBancaire LIKE %:ribBancaire% AND t.etat = 'non traité'")
     List<TitreImportation> findAllTitlesByRib(@Param("ribBancaire") String ribBancaire);
+
 
 List<TitreImportation> findAll();
     @Query("SELECT FUNCTION('YEAR', t.dateReception) AS year, FUNCTION('MONTH', t.dateReception) AS month, COUNT(t) AS fileCount " +

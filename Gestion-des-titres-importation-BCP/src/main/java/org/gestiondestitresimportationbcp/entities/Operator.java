@@ -39,7 +39,9 @@ private String ribBancaire ;
         titresImportations = new ArrayList<>();
     }
 
-    public Operator(long idFiscalUnique, String nom, int centre, String typeIdentification, long numIdentification, long identifiantDouane, String ribBancaire) {
+
+    public Operator(OperatorId id, long idFiscalUnique, String nom, int centre, String typeIdentification, long numIdentification, long identifiantDouane, String ribBancaire) {
+        this.id = id;
         this.idFiscalUnique = idFiscalUnique;
         this.nom = nom;
         this.centre = centre;
@@ -47,7 +49,7 @@ private String ribBancaire ;
         this.numIdentification = numIdentification;
         this.identifiantDouane = identifiantDouane;
         this.ribBancaire = ribBancaire;
-        this.titresImportations = new ArrayList<>();
+
     }
 
     public long getIdentifiantDouane() {

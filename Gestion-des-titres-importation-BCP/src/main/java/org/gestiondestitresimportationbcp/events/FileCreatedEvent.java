@@ -1,11 +1,8 @@
 package org.gestiondestitresimportationbcp.events;
 
 import org.springframework.context.ApplicationEvent;
-
 import java.io.File;
-import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 
 public class FileCreatedEvent extends ApplicationEvent {
         private final File file;

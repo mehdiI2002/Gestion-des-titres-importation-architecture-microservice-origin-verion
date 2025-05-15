@@ -96,6 +96,32 @@ private Banque banque;
     public TitreImportation() {
     }
 
+    public TitreImportation(TitreImportationId id, int categorie, Long numEnregistrement, int typeDedmande, String etat, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString, Date dateReception, Date dateTraitement, Operator operator, Message message, Banque banque, MarchandiseInfo marchandiseInfo, PaysProvenanceInfo paysProvenanceInfo) {
+        this.id = id;
+        Categorie = categorie;
+        this.numEnregistrement = numEnregistrement;
+        this.typeDedmande = typeDedmande;
+        this.etat = etat;
+        this.importateur = importateur;
+        this.expediteur = expediteur;
+        this.regimeDouanier = regimeDouanier;
+        this.bureauDouanier = bureauDouanier;
+        this.montantTotale = montantTotale;
+        this.montantFOB = montantFOB;
+        this.motantFret = motantFret;
+        this.montantAssuranceAcessoires = montantAssuranceAcessoires;
+        this.devise = devise;
+        ConditionsLivraison = conditionsLivraison;
+        this.incotermString = incotermString;
+        this.dateReception = dateReception;
+        this.dateTraitement = dateTraitement;
+        this.operator = operator;
+        this.message = message;
+        this.banque = banque;
+        this.marchandiseInfo = marchandiseInfo;
+        this.paysProvenanceInfo = paysProvenanceInfo;
+    }
+
     public Operator getOperator() {
         return operator;
     }
