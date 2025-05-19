@@ -41,18 +41,15 @@ public class PdfFileRepositoryTest {
         file2.setNom("facture2.pdf");
         pdfFileRepository.save(file2);
     }
-
     @Test
     public void findPathByNumeroEnregistrementTest() {
         List<String> file = pdfFileRepository.findPathByNumeroEnregistrement(123456789L);
         assertEquals("/documents/facture1.pdf", file.get(0));
     }
-
     @Test
     public void findPdfAllFileByNomTest() {
         List<PdfFile> pdfFiles = pdfFileRepository.findPdfAllFileByNom("facture1.pdf");
         assertEquals(1, pdfFiles.size());
         assertEquals("facture1.pdf", pdfFiles.get(0).getNom());
-
     }
 }
