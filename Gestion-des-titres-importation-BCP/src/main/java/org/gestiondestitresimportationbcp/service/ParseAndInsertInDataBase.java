@@ -10,7 +10,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.util.Date;
-
 @Service
 public class ParseAndInsertInDataBase {
     @Qualifier("parseDDDAndDPDFile")

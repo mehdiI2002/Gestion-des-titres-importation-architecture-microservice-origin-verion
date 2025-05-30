@@ -30,8 +30,7 @@ public class ValidateFilesDefault implements  ValidateFiles {
             // Valider le fichier XML
                      validator.validate(new SAXSource(new InputSource(new FileInputStream(xmlFile))));
         } catch (SAXException e) {
-            System.out.println("Erreur"+e.getMessage());
-
+            System.out.println("Erreur de validation xsd "+e.getMessage());
             // La validation a échoué, afficher l'erreur ou la remonter
             return false;
         }

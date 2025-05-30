@@ -10,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
-
 @DataJpaTest
 @ActiveProfiles("test")
 public class PdfFileRepositoryTest {
@@ -22,7 +19,6 @@ public class PdfFileRepositoryTest {
     private WatchFolderServicesDefault watchFolderServicesDefault;
     @MockBean
     private DirectoriesInitializer directoriesInitializer;
-
     @Autowired
     private PdfFileRepository pdfFileRepository;
 
